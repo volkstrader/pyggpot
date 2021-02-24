@@ -27,11 +27,27 @@ func TestFixAddCoinValidationMessage(t *testing.T) {
 			err:  github_com_mwitkow_go_proto_validators.FieldError("PotName", fmt.Errorf(errMsg)),
 		},
 		{
+			name: "PP.P",
+			err:  github_com_mwitkow_go_proto_validators.FieldError("PotName", fmt.Errorf(errMsg)),
+		},
+		{
 			name: "PP-",
 			err:  github_com_mwitkow_go_proto_validators.FieldError("PotName", fmt.Errorf(errMsg)),
 		},
 		{
+			name: "PP-P",
+			err:  nil,
+		},
+		{
 			name: "PPP",
+			err:  nil,
+		},
+		{
+			name: "PP P",
+			err:  nil,
+		},
+		{
+			name: "PP_P",
 			err:  nil,
 		},
 	}
