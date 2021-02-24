@@ -10,8 +10,11 @@ require (
 	github.com/mwitkow/go-proto-validators v0.3.2
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rakyll/statik v0.1.7
+	github.com/stretchr/objx v0.3.0 // indirect
+	github.com/stretchr/testify v1.7.0 // indirect
 	github.com/twitchtv/twirp v7.1.0+incompatible
 	github.com/xo/dburl v0.0.0-20200910011426-652e0d5720a3
 	github.com/xo/xoutil v0.0.0-20171112033149-46189f4026a5
 	google.golang.org/protobuf v1.25.0
+	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
