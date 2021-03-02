@@ -78,8 +78,11 @@ func (s *coinServer) RemoveCoins(ctx context.Context, request *coin_service.Remo
 
 	// shake pot
 	final := shakePot(pot, int(request.Count), rand.Int)
+	committed := false
 	defer func() {
-		_ = tx.Rollback()
+		if !committed {
+			_ = tx.Rollback()
+		}
 	}()
 
 	resp := coin_service.CoinsListResponse{
@@ -107,9 +110,8 @@ func (s *coinServer) RemoveCoins(ctx context.Context, request *coin_service.Remo
 	if err != nil {
 		return nil, twirp.NotFoundError(err.Error())
 	}
-
+	committed = true
 	return &resp, nil
-
 }
 
 // shakePot simulate a person pickup the pyggot (lock the resource exclusively) and then shake the pot to remove coin
