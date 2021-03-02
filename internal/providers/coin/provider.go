@@ -87,6 +87,11 @@ func (s *coinServer) RemoveCoins(ctx context.Context, request *coin_service.Remo
 	}
 
 	for i, c := range coins {
+		if c.CoinCount == int32(final[i]) {
+			// skip update when no changes
+			continue
+		}
+
 		c.CoinCount = int32(final[i])
 		if err = c.Update(tx); err != nil {
 			return nil, twirp.InternalError(err.Error())
